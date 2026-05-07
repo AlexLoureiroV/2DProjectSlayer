@@ -5,66 +5,66 @@ using Random = UnityEngine.Random;
 
 public class ItemSpawner : MonoBehaviour
 {
-	#region Properties
-	#endregion
-
-	#region Fields	
-	[SerializeField] private float _minSpawnTime=1;
-	[SerializeField] private float _maxSpawnTime=5;
-	[SerializeField] private List<Item> _spawnList;
-	private float _nextSpawnTime;
-	private float _cronoTime = 0;
-	#endregion
-
-	#region Unity Callbacks
-	// Start is called before the first frame update
-	void Start()
+    [System.Serializable]
+    public class SpawnZone
     {
-		ResetTime();
+        public string zoneName;
+        public List<Item> spawnList;
+        public float minSpawnTime = 1f;
+        public float maxSpawnTime = 5f;
     }
 
-	// Update is called once per frame
-	void Update()
+    [SerializeField] private List<SpawnZone> _zones;
+
+    private SpawnZone _currentZone;
+    private float _nextSpawnTime;
+    private float _cronoTime = 0;
+    private float _currentMaxSpawnTime;
+
+    void Start()
     {
-		_cronoTime += Time.deltaTime;
-		if (_cronoTime > _nextSpawnTime)
-		{
-			SpawnItem();
-			ResetTime();
-		}
-	}
+        if (_zones.Count > 0)
+            SetZone(0);
+    }
 
-	#endregion
+    void Update()
+    {
+        if (_currentZone == null || _currentZone.spawnList.Count == 0) return;
 
-	#region Public Methods
-	#endregion
+        _cronoTime += Time.deltaTime;
+        if (_cronoTime > _nextSpawnTime)
+        {
+            SpawnItem();
+            ResetTime();
+        }
+    }
 
-	#region Private Methods
-	private void ResetTime()
-	{
-		_cronoTime = 0;
-		_nextSpawnTime = Random.Range(_minSpawnTime, _maxSpawnTime);
-	}
+    public void SetZone(int zoneIndex)
+    {
+        if (zoneIndex < 0 || zoneIndex >= _zones.Count) return;
+        _currentZone = _zones[zoneIndex];
+        _currentMaxSpawnTime = _currentZone.maxSpawnTime;
+        ResetTime();
+        Debug.Log("Zona activa: " + _currentZone.zoneName);
+    }
 
-	private void SpawnItem()
-	{
-		//Random object from a list
-		int index = Random.Range(0, _spawnList.Count);
+    private void ResetTime()
+    {
+        _cronoTime = 0;
+        _nextSpawnTime = Random.Range(_currentZone.minSpawnTime, _currentMaxSpawnTime);
+    }
 
-		//Random horizontal Position
-		float xPos = Random.Range(-7f, 7f);
-		Vector2 itemPosition = new Vector2(xPos, transform.position.y);
+    private void SpawnItem()
+    {
+        int index = Random.Range(0, _currentZone.spawnList.Count);
+        float xPos = Random.Range(-7f, 7f);
+        Vector2 itemPosition = new Vector2(xPos, transform.position.y);
+        Item newItem = Instantiate(_currentZone.spawnList[index], itemPosition, Quaternion.identity);
+        float torqueforce = Random.Range(-70f, 70f);
+        newItem.GetComponent<Rigidbody2D>().AddTorque(torqueforce);
 
-		//Instantiation
-		Item newItem = Instantiate(_spawnList[index], itemPosition, Quaternion.identity);
-
-		//Add Rotation Force
-		float torqueforce = Random.Range(-70f, 70f);
-		newItem.GetComponent<Rigidbody2D>().AddTorque(torqueforce);
-
-		//Dificulty Progression
-		if (_maxSpawnTime > _minSpawnTime)
-			_maxSpawnTime -= 0.1f;
-	}
-	#endregion
+        // Dificultad progresiva por zona
+        if (_currentMaxSpawnTime > _currentZone.minSpawnTime)
+            _currentMaxSpawnTime -= 0.1f;
+    }
 }

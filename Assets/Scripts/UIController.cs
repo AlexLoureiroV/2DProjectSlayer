@@ -5,6 +5,11 @@ using TMPro;
 public class UIController : MonoBehaviour
 {
     #region Fields
+    [Header("Vidas")]
+    [SerializeField] private Health _health;
+    [SerializeField] private Image[] _lifeIcons;
+    [SerializeField] private Sprite _lifeFullSprite;
+    [SerializeField] private Sprite _lifeEmptySprite;
     [SerializeField] private Jetpack _jetpack;
     [SerializeField] private TextMeshProUGUI _textHeight;
     [SerializeField] private Image[] _energyCells;
@@ -31,11 +36,30 @@ public class UIController : MonoBehaviour
 
         _textHeight.text = ((int)_jetpack.transform.position.y).ToString();
         UpdateEnergyCells();
-        Debug.Log("Energy: " + _jetpack.Energy + " | MaxEnergy: " + _maxEnergy + " | initialized: " + _initialized);
     }
     #endregion
 
     #region Private Methods
+    void Start()
+    {
+        // Suscribirse al evento de cambio de vidas
+        if (_health != null)
+            _health.OnLivesChanged.AddListener(UpdateLivesUI);
+
+        UpdateLivesUI(_health != null ? _health.Lives : 3);
+    }
+
+    private void UpdateLivesUI(int currentLives)
+    {
+        for (int i = 0; i < _lifeIcons.Length; i++)
+        {
+            if (_lifeIcons[i] != null)
+                _lifeIcons[i].sprite = i < currentLives ? _lifeFullSprite : _lifeEmptySprite;
+        }
+    }
+
+
+
     private void UpdateEnergyCells()
 
     {
