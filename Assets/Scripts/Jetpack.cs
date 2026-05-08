@@ -6,54 +6,81 @@ public class Jetpack : MonoBehaviour
     public enum Direction { Left, Right }
 
     #region Properties
+
     public float Energy
     {
         get { return _energy; }
-        set { _energy = Mathf.Clamp(value, 0, _maxEnergy); }
+        set
+        {
+            _energy = Mathf.Clamp(value, 0, _maxEnergy);
+            CheckLowEnergy();
+        }
     }
     public float MaxEnergy => _maxEnergy;
     public bool Flying { get; set; }
     public bool IsGrounded { get; private set; }
+
     #endregion
 
     #region Fields
+
+    // Components
     private Rigidbody2D _targetRB;
+    private AudioSource _audioSource;
+
+    // Energy
     [SerializeField] private float _energy;
     [SerializeField] private float _maxEnergy;
     [SerializeField] private float _energyFlyingRatio;
     [SerializeField] private float _energyRegenerationRatio;
+
+    // Movement
     [SerializeField] private float _horizontalForce;
     [SerializeField] private float _flyForce;
     [SerializeField] private float _walkSpeed = 5f;
     [SerializeField] private float _airFriction = 0.98f;
+
+    // Ground Check
     [SerializeField] private Transform _groundCheck;
     [SerializeField] private float _groundCheckRadius = 0.1f;
     [SerializeField] private LayerMask _groundLayer;
+
+    // Audio
+    public AudioClip lowEnergySound;
+
     #endregion
 
     #region Unity Callbacks
+
+    
     private void Awake()
     {
         _targetRB = GetComponent<Rigidbody2D>();
+        _audioSource = GetComponent<AudioSource>();
+        lowEnergySound = Resources.Load<AudioClip>("Loop_urgencia");
     }
 
-    void Start()
+    private void Start()
     {
         Energy = _maxEnergy;
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         Debug.Log("_groundCheck: " + _groundCheck + " | pos: " + _groundCheck?.position);
         IsGrounded = Physics2D.OverlapCircle(_groundCheck.position, _groundCheckRadius, _groundLayer);
+
         if (Flying)
             DoFly();
-        if (Mathf.Abs(_targetRB.velocity.y) < 0.1f)
+
+        if (IsGrounded && !Flying)
             Regenerate();
     }
+
     #endregion
 
     #region Public Methods
+
     public void FlyUp() { Flying = true; }
     public void StopFlying() { Flying = false; }
     public void Regenerate() { Energy += _energyRegenerationRatio; }
@@ -81,9 +108,11 @@ public class Jetpack : MonoBehaviour
         }
         _targetRB.velocity = new Vector2(0f, _targetRB.velocity.y);
     }
+
     #endregion
 
     #region Private Methods
+
     private void DoFly()
     {
         if (Energy > 0)
@@ -94,5 +123,31 @@ public class Jetpack : MonoBehaviour
         else
             Flying = false;
     }
+
+    private void CheckLowEnergy()
+    {
+        if (_audioSource == null || lowEnergySound == null)
+        {
+            Debug.Log("AudioSource: " + _audioSource + " | Clip: " + lowEnergySound);
+            return;
+        }
+
+        float percentage = _energy / _maxEnergy;
+        Debug.Log("Energía: " + percentage);
+
+        if (percentage <= 0.2f)
+        {
+            if (!_audioSource.isPlaying)
+            {
+                _audioSource.clip = lowEnergySound;
+                _audioSource.Play();
+            }
+        }
+        else
+        {
+            _audioSource.Stop();
+        }
+    }
+
     #endregion
 }

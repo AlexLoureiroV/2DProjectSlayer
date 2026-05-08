@@ -3,7 +3,9 @@ guid: 6bc1d4d491fc6494faf37235ccde6fb6
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _groundCheck: {fileID: 5407330524253444887, guid: d7fb3e8383f2d2d45885d3d53a93bcfd, type: 3}
+  - lowEnergySound: {fileID: 8300000, guid: 6b75372f1c2445a4c8c4c8ca6754dbd3, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2035314427183252154}
   - component: {fileID: 2906388034566083067}
   - component: {fileID: 2308526164884092793}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 8206985435084064575}
   - component: {fileID: 6794336187844558166}
   - component: {fileID: 593408122733371340}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,13 +244,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1484895048732692684, guid: ae9890d08afd0484fb01105e534cffda, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484895048732692684, guid: ae9890d08afd0484fb01105e534cffda, type: 3}
+      propertyPath: m_GravityScale
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 2941314405805544057, guid: ae9890d08afd0484fb01105e534cffda, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.27
       objectReference: {fileID: 0}
     - target: {fileID: 2941314405805544057, guid: ae9890d08afd0484fb01105e534cffda, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 0.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 2941314405805544057, guid: ae9890d08afd0484fb01105e534cffda, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.54
       objectReference: {fileID: 0}
     - target: {fileID: 2941314405805544057, guid: ae9890d08afd0484fb01105e534cffda, type: 3}
       propertyPath: m_LocalPosition.x
@@ -292,6 +304,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2941314405805544057, guid: ae9890d08afd0484fb01105e534cffda, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4542403145903916889, guid: ae9890d08afd0484fb01105e534cffda, type: 3}
       propertyPath: <Type>k__BackingField
       value: 3
@@ -307,7 +323,7 @@ PrefabInstance:
     - target: {fileID: 6434995941238461775, guid: ae9890d08afd0484fb01105e534cffda, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: a8cb231f3fd004146892160ad92b28d4, type: 3}
+      objectReference: {fileID: 21300000, guid: c4bf230ff19086c4dbe0393e66b34de2, type: 3}
     - target: {fileID: 6434995941238461775, guid: ae9890d08afd0484fb01105e534cffda, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -315,6 +331,10 @@ PrefabInstance:
     - target: {fileID: 7270445913172318630, guid: ae9890d08afd0484fb01105e534cffda, type: 3}
       propertyPath: m_Name
       value: ItemMotivation
+      objectReference: {fileID: 0}
+    - target: {fileID: 7270445913172318630, guid: ae9890d08afd0484fb01105e534cffda, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -390,7 +410,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 7.04, y: 5.25}
+    oldSize: {x: 5.04, y: 5.04}
     newSize: {x: 7.04, y: 5.25}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

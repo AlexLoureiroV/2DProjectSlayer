@@ -5,9 +5,10 @@ public class ItemNose : Item
 {
 
 	const float NOSE_DAMAGE = -20;
+    const float NOSE_DOWN_POS = 1.5f;
 
-	#region Unity Callbacks
-	private void OnCollisionEnter2D(Collision2D collision)
+    #region Unity Callbacks
+    private void OnCollisionEnter2D(Collision2D collision)
 	{
 		if (collision.gameObject.tag == "Ground")
 			Recolected();

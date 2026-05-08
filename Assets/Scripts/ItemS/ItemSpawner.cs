@@ -13,7 +13,7 @@ public class ItemSpawner : MonoBehaviour
         public float minSpawnTime = 1f;
         public float maxSpawnTime = 5f;
     }
-
+    [SerializeField] private Transform _playerTransform;
     [SerializeField] private List<SpawnZone> _zones;
 
     private SpawnZone _currentZone;
@@ -31,6 +31,8 @@ public class ItemSpawner : MonoBehaviour
     {
         if (_currentZone == null || _currentZone.spawnList.Count == 0) return;
 
+        Debug.Log("Zona: " + _currentZone.zoneName + " | Crono: " + _cronoTime + " | NextSpawn: " + _nextSpawnTime + " | MaxSpawn: " + _currentMaxSpawnTime + " | Min: " + _currentZone.minSpawnTime);
+
         _cronoTime += Time.deltaTime;
         if (_cronoTime > _nextSpawnTime)
         {
@@ -42,6 +44,12 @@ public class ItemSpawner : MonoBehaviour
     public void SetZone(int zoneIndex)
     {
         if (zoneIndex < 0 || zoneIndex >= _zones.Count) return;
+
+        // Destruir todos los items activos al cambiar de zona
+        GameObject[] items = GameObject.FindGameObjectsWithTag("HazardItem");
+        foreach (GameObject item in items)
+            Destroy(item);
+
         _currentZone = _zones[zoneIndex];
         _currentMaxSpawnTime = _currentZone.maxSpawnTime;
         ResetTime();
@@ -57,13 +65,15 @@ public class ItemSpawner : MonoBehaviour
     private void SpawnItem()
     {
         int index = Random.Range(0, _currentZone.spawnList.Count);
-        float xPos = Random.Range(-7f, 7f);
+        float xPos = _playerTransform != null
+            ? _playerTransform.position.x + Random.Range(-7f, 7f)
+            : Random.Range(-7f, 7f);
         Vector2 itemPosition = new Vector2(xPos, transform.position.y);
+        Debug.Log("Spawneando: " + _currentZone.spawnList[index].name + " en zona: " + _currentZone.zoneName + " | pos: " + itemPosition);
         Item newItem = Instantiate(_currentZone.spawnList[index], itemPosition, Quaternion.identity);
         float torqueforce = Random.Range(-70f, 70f);
         newItem.GetComponent<Rigidbody2D>().AddTorque(torqueforce);
 
-        // Dificultad progresiva por zona
         if (_currentMaxSpawnTime > _currentZone.minSpawnTime)
             _currentMaxSpawnTime -= 0.1f;
     }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Platform
   - Ground
+  - HazardItem
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - Items
   - HazardItem
   - Ceiling
-  - 
+  - Walls
   - 
   - 
   - 

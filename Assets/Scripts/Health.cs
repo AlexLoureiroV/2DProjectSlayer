@@ -18,12 +18,14 @@ public class Health : MonoBehaviour
     private Vector3 _respawnPoint;
     private float _invulnerabilityTimer;
     private DamageFlash _damageFlash;
+    private PlayerAudio _playerAudio;
 
     void Awake()
     {
         Lives = _maxLives;
         _respawnPoint = transform.position;
         _damageFlash = GetComponent<DamageFlash>();
+        _playerAudio = GetComponent<PlayerAudio>();
     }
 
     void Update()
@@ -53,6 +55,7 @@ public class Health : MonoBehaviour
         Lives--;
         OnLivesChanged?.Invoke(Lives);
         OnDamaged?.Invoke();
+        _playerAudio?.PlayDamageSound();
 
         if (Lives <= 0)
         {

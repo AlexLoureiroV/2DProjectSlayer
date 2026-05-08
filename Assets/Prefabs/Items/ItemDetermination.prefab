@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2035314427183252154}
   - component: {fileID: 2906388034566083067}
   - component: {fileID: 2308526164884092793}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 8206985435084064575}
   - component: {fileID: 6794336187844558166}
   - component: {fileID: 593408122733371340}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -323,6 +323,10 @@ PrefabInstance:
     - target: {fileID: 7270445913172318630, guid: ae9890d08afd0484fb01105e534cffda, type: 3}
       propertyPath: m_Name
       value: ItemDetermination
+      objectReference: {fileID: 0}
+    - target: {fileID: 7270445913172318630, guid: ae9890d08afd0484fb01105e534cffda, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -5,6 +5,8 @@ public class PlayerAudio : MonoBehaviour
     [SerializeField] private AudioClip _footstepSound;
     [SerializeField] private AudioClip _damageSound;
     [SerializeField] private AudioClip _jetpackSound;
+    [SerializeField] private AudioClip _breathingSound;
+    private AudioSource _breathingAudioSource;
 
     private AudioSource _jetpackAudioSource;
     private Jetpack _jetpack;
@@ -17,6 +19,10 @@ public class PlayerAudio : MonoBehaviour
         _jetpackAudioSource.clip = _jetpackSound;
         _jetpackAudioSource.loop = true;
         _jetpackAudioSource.playOnAwake = false;
+        _breathingAudioSource = gameObject.AddComponent<AudioSource>();
+        _breathingAudioSource.clip = _breathingSound;
+        _breathingAudioSource.loop = true;
+        _breathingAudioSource.playOnAwake = false;
     }
 
     void Update()
@@ -26,6 +32,13 @@ public class PlayerAudio : MonoBehaviour
             _jetpackAudioSource.Play();
         else if (!_jetpack.Flying && _jetpackAudioSource.isPlaying)
             _jetpackAudioSource.Stop();
+        // Respiración mientras se mueve (volando o corriendo)
+        bool isMoving = _jetpack.Flying || Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) > 0.1f;
+
+        if (isMoving && !_breathingAudioSource.isPlaying)
+            _breathingAudioSource.Play();
+        else if (!isMoving && _breathingAudioSource.isPlaying)
+            _breathingAudioSource.Stop();
     }
 
     // Llamado desde Animation Event
