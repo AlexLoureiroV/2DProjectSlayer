@@ -1806,7 +1806,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e855f08e018cde48842790ef06113bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _totalTime: 20
+  _totalTime: 120
   _timerText: {fileID: 1237418477}
   _health: {fileID: 3850425983538857794}
 --- !u!1 &340596805
@@ -4932,7 +4932,7 @@ Transform:
   m_GameObject: {fileID: 1047646751}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -46.2, y: -61.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5113,7 +5113,7 @@ Transform:
   m_GameObject: {fileID: 1084710631}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 105.18, y: 15.889999, z: 0}
+  m_LocalPosition: {x: 58.98, y: -45.91, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5374,7 +5374,7 @@ Transform:
   m_GameObject: {fileID: 1146878997}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.11999999, y: 21.81, z: 0}
+  m_LocalPosition: {x: -46.32, y: -39.989998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7338,7 +7338,7 @@ Transform:
   m_GameObject: {fileID: 1584873674}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 40.48, y: 56.09, z: 0}
+  m_LocalPosition: {x: -5.720001, y: -5.709999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8790,7 +8790,7 @@ Transform:
   m_GameObject: {fileID: 1848170999}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 105.18, y: 55.489998, z: 0}
+  m_LocalPosition: {x: 58.98, y: -6.3100014, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9496,11 +9496,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3032442121949320817, guid: e19846a3a39bd9842848bcd150224841, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 46.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3032442121949320817, guid: e19846a3a39bd9842848bcd150224841, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 61.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3032442121949320817, guid: e19846a3a39bd9842848bcd150224841, type: 3}
       propertyPath: m_LocalPosition.z
@@ -145882,11 +145882,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3086938199505531938, guid: 768d48f72fdcc0046994b6d420792d3d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 46.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3086938199505531938, guid: 768d48f72fdcc0046994b6d420792d3d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 61.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3086938199505531938, guid: 768d48f72fdcc0046994b6d420792d3d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -145973,12 +145973,48 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4812135334967532056, guid: 768d48f72fdcc0046994b6d420792d3d, type: 3}
+      propertyPath: _zones.Array.data[2].maxSpawnTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812135334967532056, guid: 768d48f72fdcc0046994b6d420792d3d, type: 3}
+      propertyPath: _zones.Array.data[2].minSpawnTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812135334967532056, guid: 768d48f72fdcc0046994b6d420792d3d, type: 3}
+      propertyPath: _zones.Array.data[3].maxSpawnTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812135334967532056, guid: 768d48f72fdcc0046994b6d420792d3d, type: 3}
+      propertyPath: _zones.Array.data[3].minSpawnTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812135334967532056, guid: 768d48f72fdcc0046994b6d420792d3d, type: 3}
+      propertyPath: _zones.Array.data[4].maxSpawnTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812135334967532056, guid: 768d48f72fdcc0046994b6d420792d3d, type: 3}
+      propertyPath: _zones.Array.data[4].minSpawnTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812135334967532056, guid: 768d48f72fdcc0046994b6d420792d3d, type: 3}
       propertyPath: _zones.Array.data[0].spawnList.Array.size
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4812135334967532056, guid: 768d48f72fdcc0046994b6d420792d3d, type: 3}
       propertyPath: _zones.Array.data[1].spawnList.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812135334967532056, guid: 768d48f72fdcc0046994b6d420792d3d, type: 3}
+      propertyPath: _zones.Array.data[2].spawnList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812135334967532056, guid: 768d48f72fdcc0046994b6d420792d3d, type: 3}
+      propertyPath: _zones.Array.data[3].spawnList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812135334967532056, guid: 768d48f72fdcc0046994b6d420792d3d, type: 3}
+      propertyPath: _zones.Array.data[4].spawnList.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4812135334967532056, guid: 768d48f72fdcc0046994b6d420792d3d, type: 3}
       propertyPath: _zones.Array.data[0].spawnList.Array.data[0]
@@ -145989,13 +146025,45 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2784046645514791758, guid: f113de9e1230f0941b00b4f471773ed8, type: 3}
     - target: {fileID: 4812135334967532056, guid: 768d48f72fdcc0046994b6d420792d3d, type: 3}
+      propertyPath: _zones.Array.data[0].spawnList.Array.data[2]
+      value: 
+      objectReference: {fileID: 2324394078615961691, guid: a5573acdc160f644fb7dc5eda1fd7932, type: 3}
+    - target: {fileID: 4812135334967532056, guid: 768d48f72fdcc0046994b6d420792d3d, type: 3}
       propertyPath: _zones.Array.data[1].spawnList.Array.data[0]
       value: 
-      objectReference: {fileID: 2784046645514791758, guid: 2ff4d18dbdd730d408bef38f579c77a6, type: 3}
+      objectReference: {fileID: 2784046645514791758, guid: f113de9e1230f0941b00b4f471773ed8, type: 3}
     - target: {fileID: 4812135334967532056, guid: 768d48f72fdcc0046994b6d420792d3d, type: 3}
       propertyPath: _zones.Array.data[1].spawnList.Array.data[1]
       value: 
       objectReference: {fileID: 2784046645514791758, guid: f113de9e1230f0941b00b4f471773ed8, type: 3}
+    - target: {fileID: 4812135334967532056, guid: 768d48f72fdcc0046994b6d420792d3d, type: 3}
+      propertyPath: _zones.Array.data[2].spawnList.Array.data[0]
+      value: 
+      objectReference: {fileID: 7735931051061406845, guid: d5cc5e5a562cc1f479bcf5715081261d, type: 3}
+    - target: {fileID: 4812135334967532056, guid: 768d48f72fdcc0046994b6d420792d3d, type: 3}
+      propertyPath: _zones.Array.data[2].spawnList.Array.data[1]
+      value: 
+      objectReference: {fileID: 2784046645514791758, guid: f113de9e1230f0941b00b4f471773ed8, type: 3}
+    - target: {fileID: 4812135334967532056, guid: 768d48f72fdcc0046994b6d420792d3d, type: 3}
+      propertyPath: _zones.Array.data[3].spawnList.Array.data[0]
+      value: 
+      objectReference: {fileID: 7735931051061406845, guid: d5cc5e5a562cc1f479bcf5715081261d, type: 3}
+    - target: {fileID: 4812135334967532056, guid: 768d48f72fdcc0046994b6d420792d3d, type: 3}
+      propertyPath: _zones.Array.data[3].spawnList.Array.data[1]
+      value: 
+      objectReference: {fileID: 2324394078615961691, guid: a5573acdc160f644fb7dc5eda1fd7932, type: 3}
+    - target: {fileID: 4812135334967532056, guid: 768d48f72fdcc0046994b6d420792d3d, type: 3}
+      propertyPath: _zones.Array.data[4].spawnList.Array.data[0]
+      value: 
+      objectReference: {fileID: 7735931051061406845, guid: d5cc5e5a562cc1f479bcf5715081261d, type: 3}
+    - target: {fileID: 4812135334967532056, guid: 768d48f72fdcc0046994b6d420792d3d, type: 3}
+      propertyPath: _zones.Array.data[4].spawnList.Array.data[1]
+      value: 
+      objectReference: {fileID: 2784046645514791758, guid: f113de9e1230f0941b00b4f471773ed8, type: 3}
+    - target: {fileID: 4812135334967532056, guid: 768d48f72fdcc0046994b6d420792d3d, type: 3}
+      propertyPath: _zones.Array.data[4].spawnList.Array.data[2]
+      value: 
+      objectReference: {fileID: 2324394078615961691, guid: a5573acdc160f644fb7dc5eda1fd7932, type: 3}
     - target: {fileID: 8007407889077889481, guid: 768d48f72fdcc0046994b6d420792d3d, type: 3}
       propertyPath: orthographic
       value: 0
