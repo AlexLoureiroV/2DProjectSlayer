@@ -76,9 +76,7 @@ public class Health : MonoBehaviour
     }
     public void RestartScene()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(
-            UnityEngine.SceneManagement.SceneManager.GetActiveScene().name
-        );
+        UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
     }
 
 }

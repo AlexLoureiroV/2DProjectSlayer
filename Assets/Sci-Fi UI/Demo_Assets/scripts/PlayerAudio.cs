@@ -28,11 +28,12 @@ public class PlayerAudio : MonoBehaviour
             _jetpackAudioSource.Stop();
     }
 
-    // Llamado desde Animation Event en el frame del paso
+    // Llamado desde Animation Event
     public void PlayFootstep()
     {
-        Debug.Log("PlayFootstep llamado | clip: " + _footstepSound + " | AudioManager: " + AudioManager.Instance);
-        AudioManager.Instance?.PlaySFX(_footstepSound);
+        Debug.Log("PlayFootstep | Grounded: " + _jetpack.IsGrounded + " | Flying: " + _jetpack.Flying + " | clip: " + _footstepSound);
+        if (_jetpack.IsGrounded && !_jetpack.Flying)
+            AudioManager.Instance?.PlaySFX(_footstepSound);
     }
 
     // Llamado desde Health.OnDamaged

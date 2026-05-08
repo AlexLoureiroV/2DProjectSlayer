@@ -1,12 +1,9 @@
 fileFormatVersion: 2
-guid: 61f0a7317945fb34e9cf9935b744681a
+guid: cbfd4719f27f6a94599eebf36731932f
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - _footstepSound: {instanceID: 0}
-  - _damageSound: {instanceID: 0}
-  - _jetpackSound: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
