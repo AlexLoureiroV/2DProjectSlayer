@@ -248,4 +248,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _destroyOnTag: Platform
-  _destroyDelay: 0.33
+  _destroyDelay: 0.5

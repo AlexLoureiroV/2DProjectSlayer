@@ -4,9 +4,10 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - _footstepSound: {fileID: 8300000, guid: 206ad7af9588fab47bdb29c521087f6d, type: 3}
+  - _footstepSound: {fileID: 8300000, guid: e7c8e12db106f3e49b1c1c98b35ea310, type: 3}
   - _damageSound: {fileID: 8300000, guid: cf703c802dfd86146be152d785351112, type: 3}
   - _jetpackSound: {fileID: 8300000, guid: 5a4fee539177a12478f3733d6eaaa368, type: 3}
+  - _breathingSound: {fileID: 8300000, guid: d7a548549dee2e14b9efa2906eed973b, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
