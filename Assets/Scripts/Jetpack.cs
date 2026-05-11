@@ -1,3 +1,5 @@
+using System.Collections;
+using UnityEngine;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -39,6 +41,8 @@ public class Jetpack : MonoBehaviour
     [SerializeField] private float _flyForce;
     [SerializeField] private float _walkSpeed = 5f;
     [SerializeField] private float _airFriction = 0.98f;
+    [SerializeField] private float _jumpForce = 10f;
+
 
     // Ground Check
     [SerializeField] private Transform _groundCheck;
@@ -52,12 +56,72 @@ public class Jetpack : MonoBehaviour
 
     #region Unity Callbacks
 
-    
+
     private void Awake()
     {
         _targetRB = GetComponent<Rigidbody2D>();
         _audioSource = GetComponent<AudioSource>();
         lowEnergySound = Resources.Load<AudioClip>("Loop_urgencia");
+    }
+    public void Jump()
+    {
+        bool canJump = IsGrounded || IsTouchingWallBelow();
+        Debug.Log("Jump llamado | IsGrounded: " + IsGrounded + " | WallBelow: " + IsTouchingWallBelow());
+
+        if (canJump)
+            _targetRB.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
+    }
+
+    private bool IsTouchingWallBelow()
+    {
+        // Lanza un raycast hacia abajo para detectar Wall
+        RaycastHit2D hit = Physics2D.CircleCast(
+            transform.position,
+            _groundCheckRadius,
+            Vector2.down,
+            _groundCheckRadius,
+            _groundLayer
+        );
+
+        if (hit.collider != null && hit.collider.CompareTag("Wall"))
+            return true;
+
+        return false;
+    }
+
+    // Llama esto cuando la energía baje del 20% Y se pulse el botón
+    public void StartLowEnergySound()
+    {
+        if (!_audioSource.isPlaying)
+        {
+            _audioSource.clip = lowEnergySound;
+            _audioSource.loop = true;   // Loop para que no pare solo
+            _audioSource.Play();
+        }
+    }
+
+    // Llama esto cuando se suelte el botón O la energía suba del 20%
+    public void StopLowEnergySound()
+    {
+        // Espera a que termine el ciclo actual antes de parar
+        if (_audioSource.isPlaying)
+        {
+            StartCoroutine(StopAfterCurrentLoop());
+        }
+    }
+
+    private IEnumerator StopAfterCurrentLoop()
+    {
+        float clipLength = lowEnergySound.length;
+        float timeRemaining = clipLength - (_audioSource.time % clipLength);
+
+        // Desactiva el loop para que no repita
+        _audioSource.loop = false;
+
+        // Espera a que termine la reproducción actual
+        yield return new WaitForSeconds(timeRemaining);
+
+        _audioSource.Stop();
     }
 
     private void Start()
@@ -65,10 +129,15 @@ public class Jetpack : MonoBehaviour
         Energy = _maxEnergy;
     }
 
+
     private void FixedUpdate()
     {
-        Debug.Log("_groundCheck: " + _groundCheck + " | pos: " + _groundCheck?.position);
-        IsGrounded = Physics2D.OverlapCircle(_groundCheck.position, _groundCheckRadius, _groundLayer);
+        // Esto debe estar siempre
+        IsGrounded = Physics2D.OverlapCircle(
+            _groundCheck.position,
+            _groundCheckRadius,
+            _groundLayer
+        );
 
         if (Flying)
             DoFly();

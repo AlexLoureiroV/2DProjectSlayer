@@ -3,23 +3,22 @@ using System;
 
 public class ItemPositive : Item
 {
-	#region Contants
+    #region Constants
+    const float POSITIVE_HEAL = 20;
+    #endregion
 
-	const float POSITIVE_HEAL = 20;
-	#endregion
-	#region Unity Callbacks
-	private void OnCollisionEnter2D(Collision2D collision)
-	{
-		if (collision.gameObject.tag == "Ground")
-			Recolected();
+    #region Unity Callbacks
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Wall"))
+            Recolected();
 
-		if (collision.gameObject.tag == "Player")
-		{
-			Jetpack jetpack = collision.gameObject.GetComponent<Jetpack>();			
-			jetpack.AddEnergy(POSITIVE_HEAL);
-			Recolected();
-		}
-	}
-	#endregion
-
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Jetpack jetpack = collision.gameObject.GetComponent<Jetpack>();
+            jetpack.AddEnergy(POSITIVE_HEAL);
+            Recolected();
+        }
+    }
+    #endregion
 }

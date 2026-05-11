@@ -47,6 +47,10 @@ public class InputController : MonoBehaviour
             _jetpack.FlyUp();
         else
             _jetpack.StopFlying();
+
+        // Salto con Space
+        if (Input.GetKeyDown(KeyCode.Space))
+            _jetpack.Jump();
     }
     #endregion
 }

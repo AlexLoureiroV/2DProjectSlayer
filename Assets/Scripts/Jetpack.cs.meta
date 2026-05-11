@@ -5,7 +5,7 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - _groundCheck: {fileID: 5407330524253444887, guid: d7fb3e8383f2d2d45885d3d53a93bcfd, type: 3}
-  - lowEnergySound: {fileID: 8300000, guid: 6b75372f1c2445a4c8c4c8ca6754dbd3, type: 3}
+  - lowEnergySound: {fileID: 8300000, guid: 1ed5943c98b62f44a9e40b9127747598, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

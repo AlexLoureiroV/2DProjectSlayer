@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckP
       objectReference: {fileID: 0}
+    - target: {fileID: 6769338620355207198, guid: 8cadcbee7a828ab4cbbdda68d388d5e5, type: 3}
+      propertyPath: healAmount
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9005544630752259484, guid: 8cadcbee7a828ab4cbbdda68d388d5e5, type: 3}
       propertyPath: m_Sprite
       value: 

@@ -133,6 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e56b618931d7a946b58d53bbc4a0c23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickUpSound: {fileID: 8300000, guid: b50c0837f074b9549937474ceb0c9333, type: 3}
+  pickUpSound: {fileID: 8300000, guid: 24be06b4f556a9f449fde963b3f0f10b, type: 3}
   volume: 1
   pickUpEffect: {fileID: 5681889072824126793, guid: 569225ebf3cc0f24bbd022d5d48805ef, type: 3}
+  healAmount: 1

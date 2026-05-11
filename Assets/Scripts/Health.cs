@@ -71,10 +71,9 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void HealLife()
+    public void HealLife(int amount = 1)
     {
-        if (Lives >= _maxLives) return;
-        Lives++;
+        Lives = Mathf.Min(Lives + amount, _maxLives);
         OnLivesChanged?.Invoke(Lives);
     }
     public void RestartScene()

@@ -7,6 +7,8 @@ TagManager:
   - Platform
   - Ground
   - HazardItem
+  - O2Item
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -18,7 +20,7 @@ TagManager:
   - HazardItem
   - Ceiling
   - Walls
-  - 
+  - O2Item
   - 
   - 
   - 

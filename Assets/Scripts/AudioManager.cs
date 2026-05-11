@@ -20,6 +20,13 @@ public class AudioManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        // Crea los AudioSource automáticamente si no están asignados
+        if (_musicSource == null)
+            _musicSource = gameObject.AddComponent<AudioSource>();
+
+        if (_sfxSource == null)
+            _sfxSource = gameObject.AddComponent<AudioSource>();
     }
 
     void Start()

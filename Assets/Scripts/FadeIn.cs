@@ -5,7 +5,7 @@ using System.Collections;
 public class FadeIn : MonoBehaviour
 {
     [SerializeField] private Image _fadePanel;
-    [SerializeField] private float _fadeDuration = 2f;
+    [SerializeField] private float _fadeDuration = 1f;
 
     void Start()
     {

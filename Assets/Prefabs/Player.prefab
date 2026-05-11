@@ -70,6 +70,14 @@ MonoBehaviour:
   _energyRegenerationRatio: 0.2
   _horizontalForce: 15
   _flyForce: 300
+  _walkSpeed: 5
+  _airFriction: 0.98
+  _groundCheck: {fileID: 0}
+  _groundCheckRadius: 0.1
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  lowEnergySound: {fileID: 8300000, guid: 1ed5943c98b62f44a9e40b9127747598, type: 3}
 --- !u!114 &3574023175227339799
 MonoBehaviour:
   m_ObjectHideFlags: 0

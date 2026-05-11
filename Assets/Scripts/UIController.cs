@@ -1,9 +1,13 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
 public class UIController : MonoBehaviour
 {
+    #region Singleton
+    public static UIController Instance { get; private set; }
+    #endregion
+
     #region Fields
     [Header("Vidas")]
     [SerializeField] private Health _health;
@@ -13,15 +17,32 @@ public class UIController : MonoBehaviour
     [SerializeField] private Jetpack _jetpack;
     [SerializeField] private TextMeshProUGUI _textHeight;
     [SerializeField] private Image[] _energyCells;
-    [SerializeField] private Color[] _cellFullColors; // define aqu� el color de cada celda
+    [SerializeField] private Color[] _cellFullColors;
     [SerializeField] private Color _cellEmptyColor = new Color(0.15f, 0.15f, 0.15f);
     [SerializeField] private Color _cellLowColor = new Color(1f, 0.3f, 0.1f);
-
     private float _maxEnergy;
     private bool _initialized;
     #endregion
 
     #region Unity Callbacks
+    void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+
+    void Start()
+    {
+        if (_health != null)
+            _health.OnLivesChanged.AddListener(UpdateLivesUI);
+        UpdateLivesUI(_health != null ? _health.Lives : 3);
+    }
+
     void Update()
     {
         if (!_initialized)
@@ -33,22 +54,12 @@ public class UIController : MonoBehaviour
             }
             return;
         }
-
         _textHeight.text = ((int)_jetpack.transform.position.y).ToString();
         UpdateEnergyCells();
     }
     #endregion
 
     #region Private Methods
-    void Start()
-    {
-        // Suscribirse al evento de cambio de vidas
-        if (_health != null)
-            _health.OnLivesChanged.AddListener(UpdateLivesUI);
-
-        UpdateLivesUI(_health != null ? _health.Lives : 3);
-    }
-
     private void UpdateLivesUI(int currentLives)
     {
         for (int i = 0; i < _lifeIcons.Length; i++)
@@ -58,25 +69,26 @@ public class UIController : MonoBehaviour
         }
     }
 
-
-
     private void UpdateEnergyCells()
-
     {
         if (_maxEnergy == 0 || !_initialized) return;
 
         float energyPercent = _jetpack.Energy / _maxEnergy;
-        int cellsFilled = Mathf.CeilToInt(energyPercent * _energyCells.Length);
 
         for (int i = 0; i < _energyCells.Length; i++)
         {
-            if (i < cellsFilled)
+            float threshold = (float)i / _energyCells.Length;
+            bool isFilled = energyPercent > threshold;
+
+            if (isFilled)
             {
                 Color fullColor = (i < _cellFullColors.Length) ? _cellFullColors[i] : Color.white;
                 _energyCells[i].color = energyPercent <= 0.2f ? _cellLowColor : fullColor;
             }
             else
                 _energyCells[i].color = _cellEmptyColor;
+
+            Debug.Log($"Celda {i} ({_energyCells[i].gameObject.name}) → color aplicado: {_energyCells[i].color}");
         }
     }
     #endregion

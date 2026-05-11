@@ -27,12 +27,19 @@ public class Item : MonoBehaviour, IRecolectable
 		Destroy(gameObject);
 		CreateParticles();
 	}
-	#endregion
+    #endregion
 
-	#region Private Methods
-	private void CreateParticles()
-	{
-		Instantiate(_particles, transform.position, Quaternion.identity);
-	}
-	#endregion
+    #region Private Methods
+    private void CreateParticles()
+    {
+        if (_particles == null) return; // Evita el crash
+        Instantiate(_particles, transform.position, Quaternion.identity);
+    }
+
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+            Destroy(gameObject);
+    }
+    #endregion
 }

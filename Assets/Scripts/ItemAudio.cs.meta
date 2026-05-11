@@ -4,7 +4,7 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - _pickupSound: {fileID: 8300000, guid: b50c0837f074b9549937474ceb0c9333, type: 3}
+  - _pickupSound: {fileID: 8300000, guid: 24be06b4f556a9f449fde963b3f0f10b, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
