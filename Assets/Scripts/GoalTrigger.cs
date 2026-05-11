@@ -6,7 +6,7 @@ public class GoalTrigger : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _goalText;
     [SerializeField] private string _message = "¡Nivel completado!";
     [SerializeField] private float _waitTime = 3f; // Segundos antes de cargar la siguiente escena
-    [SerializeField] private string _nextScene = "NombreDeLaSiguienteEscena";
+    [SerializeField] private string _nextScene = "Level2";
 
     private bool _triggered = false;
 
