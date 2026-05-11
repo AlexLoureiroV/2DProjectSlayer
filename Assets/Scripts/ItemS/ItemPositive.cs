@@ -8,11 +8,10 @@ public class ItemPositive : Item
     #endregion
 
     #region Unity Callbacks
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected override void OnCollision(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Wall"))
             Recolected();
-
         if (collision.gameObject.CompareTag("Player"))
         {
             Jetpack jetpack = collision.gameObject.GetComponent<Jetpack>();

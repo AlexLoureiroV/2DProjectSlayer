@@ -11,7 +11,7 @@ public class O2BottleDestroy : MonoBehaviour
 
     private void DestroySelf()
     {
-        Debug.Log("DESTRUYENDO bombona");
+   
         foreach (Collider2D col in GetComponents<Collider2D>())
             col.enabled = false;
         Destroy(gameObject);

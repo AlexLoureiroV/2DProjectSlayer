@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine;
+
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Jetpack : MonoBehaviour
@@ -74,7 +74,7 @@ public class Jetpack : MonoBehaviour
 
     private bool IsTouchingWallBelow()
     {
-        // Lanza un raycast hacia abajo para detectar Wall
+        // Lanza un raycast hacia abajo para detectar Wall y solo saltar en ese caso
         RaycastHit2D hit = Physics2D.CircleCast(
             transform.position,
             _groundCheckRadius,
@@ -89,21 +89,21 @@ public class Jetpack : MonoBehaviour
         return false;
     }
 
-    // Llama esto cuando la energía baje del 20% Y se pulse el botón
+    // Energía baje del 20% Y se pulse el botón
     public void StartLowEnergySound()
     {
         if (!_audioSource.isPlaying)
         {
             _audioSource.clip = lowEnergySound;
-            _audioSource.loop = true;   // Loop para que no pare solo
+            _audioSource.loop = true; 
             _audioSource.Play();
         }
     }
 
-    // Llama esto cuando se suelte el botón O la energía suba del 20%
+    // Parar sonido de emergencia cuando suelte el botón O la energía suba del 20%
     public void StopLowEnergySound()
     {
-        // Espera a que termine el ciclo actual antes de parar
+        
         if (_audioSource.isPlaying)
         {
             StartCoroutine(StopAfterCurrentLoop());
@@ -132,7 +132,7 @@ public class Jetpack : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Esto debe estar siempre
+        
         IsGrounded = Physics2D.OverlapCircle(
             _groundCheck.position,
             _groundCheckRadius,
@@ -197,7 +197,7 @@ public class Jetpack : MonoBehaviour
     {
         if (_audioSource == null || lowEnergySound == null)
         {
-            Debug.Log("AudioSource: " + _audioSource + " | Clip: " + lowEnergySound);
+           
             return;
         }
 

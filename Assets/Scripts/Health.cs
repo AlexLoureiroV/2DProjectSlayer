@@ -11,9 +11,9 @@ public class Health : MonoBehaviour
     public int Lives { get; private set; }
     public bool IsInvulnerable { get; private set; }
 
-    public UnityEvent<int> OnLivesChanged;  // para actualizar la UI
-    public UnityEvent OnDeath;              // cuando se acaban las vidas
-    public UnityEvent OnDamaged;            // para efectos visuales/sonido
+    public UnityEvent<int> OnLivesChanged;  
+    public UnityEvent OnDeath;              
+    public UnityEvent OnDamaged;            
 
     private Vector3 _respawnPoint;
     private float _invulnerabilityTimer;
@@ -30,7 +30,7 @@ public class Health : MonoBehaviour
 
     void Update()
     {
-        // Bajar invulnerabilidad
+        // Invulnerabilidad
         if (IsInvulnerable)
         {
             _invulnerabilityTimer -= Time.deltaTime;
@@ -64,7 +64,7 @@ public class Health : MonoBehaviour
         }
         else
         {
-            // Solo invulnerabilidad temporal, sin mover al jugador
+            // Invulnerabilidad temporal, sin mover al jugador
             IsInvulnerable = true;
             _invulnerabilityTimer = _invulnerabilityDuration;
             _damageFlash?.StartFlash(_invulnerabilityDuration);

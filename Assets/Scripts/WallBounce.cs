@@ -4,7 +4,7 @@ public class WallBounce : MonoBehaviour
 {
     [SerializeField] private float _bounceMultiplier = 1.5f;
     [SerializeField] private float _minBounceForce = 3f;
-    [SerializeField] private float _maxBounceForce = 8f; // Límite máximo
+    [SerializeField] private float _maxBounceForce = 8f; 
 
     private Rigidbody2D _rb;
 
@@ -20,7 +20,7 @@ public class WallBounce : MonoBehaviour
         Vector2 bounceDirection = collision.contacts[0].normal;
         float impactForce = Mathf.Max(collision.relativeVelocity.magnitude, _minBounceForce);
 
-        // Limita la fuerza máxima de rebote
+        // Para limitar la fuerza máxima de rebote
         float bounceForce = Mathf.Min(impactForce * _bounceMultiplier, _maxBounceForce);
 
         _rb.velocity = bounceDirection * bounceForce;

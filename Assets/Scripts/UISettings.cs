@@ -23,7 +23,7 @@ public class UISettings : MonoBehaviour
 	#endregion
 
 	#region Unity Callbacks
-	// Start is called before the first frame update
+	
 	void Start()
     {
 		//Events

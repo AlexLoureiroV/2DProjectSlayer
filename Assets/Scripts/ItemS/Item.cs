@@ -32,14 +32,18 @@ public class Item : MonoBehaviour, IRecolectable
     #region Private Methods
     private void CreateParticles()
     {
-        if (_particles == null) return; // Evita el crash
+        if (_particles == null) return; // Evita el crash cuando no hay un item asignado a la zona 
         Instantiate(_particles, transform.position, Quaternion.identity);
     }
 
-    protected virtual void OnCollisionEnter2D(Collision2D collision)
+    protected void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Wall"))
-            Destroy(gameObject);
+        OnCollision(collision); 
+    }
+
+    protected virtual void OnCollision(Collision2D collision)
+    {
+        
     }
     #endregion
 }

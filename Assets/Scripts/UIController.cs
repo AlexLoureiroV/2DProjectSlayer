@@ -79,7 +79,7 @@ public class UIController : MonoBehaviour
             else
                 _energyCells[i].color = _cellEmptyColor;
 
-            Debug.Log($"Celda {i} ({_energyCells[i].gameObject.name}) → color aplicado: {_energyCells[i].color}");
+            
         }
     }
     #endregion

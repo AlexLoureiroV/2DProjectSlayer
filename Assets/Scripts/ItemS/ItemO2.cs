@@ -1,9 +1,10 @@
 using UnityEngine;
+
 public class ItemO2 : Item
 {
     [SerializeField] private float _oxygenAmount = 0.05f;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected override void OnCollision(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Wall"))
         {
