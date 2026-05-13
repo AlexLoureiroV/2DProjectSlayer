@@ -8,7 +8,7 @@ public class GameOverController : MonoBehaviour
     [SerializeField] private GameObject _retryButton;
     void Start()
     {
-        _retryButton.SetActive(false);
+      
         _videoPlayer.loopPointReached += OnVideoFinished;
     }
     private void Update()

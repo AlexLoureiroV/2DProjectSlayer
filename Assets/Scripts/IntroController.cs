@@ -13,7 +13,7 @@ public class IntroController : MonoBehaviour
 
     void Start()
     {
-        _pressStartText.gameObject.SetActive(false);
+       
     }
 
     void Update()
